@@ -17,7 +17,7 @@ public class lista {
     
     public void agregar(Nodo elnodo){
         miLista[pos] = elnodo;
+        System.out.println("contenido en la posicion "+pos+" :"+elnodo.getKey()+" "+elnodo.getValor()+" ");//+miLista[pos].getKey());
         pos++;
-        System.out.println("el contenido de la lista:"+elnodo.key+" "+elnodo.valor);
     }
 }

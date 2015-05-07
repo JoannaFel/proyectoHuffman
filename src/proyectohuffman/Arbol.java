@@ -46,7 +46,7 @@ public class Arbol {
     public void inorderTreeWalk(Nodo x){
         if(x != null){
             inorderTreeWalk(x.hijoIzquierdo);
-            System.out.println(x.key +" "+ x.valor);
+            //System.out.println(x.key +" "+ x.valor);
             listaArboles.agregar(x);
             inorderTreeWalk(x.hijoDerecho);
         }
@@ -54,11 +54,11 @@ public class Arbol {
 
     //clase anidada Nodo que va a ser solamente utilizada por la clase Arbol
     public class Nodo{
-	public Nodo     padre;
-	public Nodo     hijoDerecho;
-	public Nodo     hijoIzquierdo;
-	public Integer  key;
-        public Object   valor;
+	private Nodo     padre;
+	private Nodo     hijoDerecho;
+	private Nodo     hijoIzquierdo;
+	private Integer  key;
+        private Object   valor;
         
         //constructor inicializando.
         public Nodo(int llave){
@@ -69,7 +69,7 @@ public class Arbol {
             valor           = null;
         
         }
-        
+        /*
         public Nodo(int llave,Object cont){
             key             = llave;
             hijoDerecho     = null;
@@ -77,6 +77,27 @@ public class Arbol {
             padre           = null;
             valor           = cont;
         
+        }*/
+
+        public Nodo getPadre() {
+            return padre;
         }
+
+        public Nodo getHijoDerecho() {
+            return hijoDerecho;
+        }
+
+        public Nodo getHijoIzquierdo() {
+            return hijoIzquierdo;
+        }
+
+        public Integer getKey() {
+            return key;
+        }
+
+        public Object getValor() {
+            return valor;
+        }
+        
     }
 }

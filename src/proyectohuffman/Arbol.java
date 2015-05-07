@@ -8,7 +8,7 @@ package proyectohuffman;
 public class Arbol {
     
     Nodo raiz;
-    
+    lista listaArboles = new lista();
     public Arbol(){
         raiz = null;
     }
@@ -46,13 +46,14 @@ public class Arbol {
     public void inorderTreeWalk(Nodo x){
         if(x != null){
             inorderTreeWalk(x.hijoIzquierdo);
-            System.out.println(x.key);
+            System.out.println(x.key +" "+ x.valor);
+            listaArboles.agregar(x);
             inorderTreeWalk(x.hijoDerecho);
         }
     }
 
     //clase anidada Nodo que va a ser solamente utilizada por la clase Arbol
-    private class Nodo{
+    public class Nodo{
 	public Nodo     padre;
 	public Nodo     hijoDerecho;
 	public Nodo     hijoIzquierdo;
@@ -66,6 +67,15 @@ public class Arbol {
             hijoIzquierdo   = null;
             padre           = null;
             valor           = null;
+        
+        }
+        
+        public Nodo(int llave,Object cont){
+            key             = llave;
+            hijoDerecho     = null;
+            hijoIzquierdo   = null;
+            padre           = null;
+            valor           = cont;
         
         }
     }

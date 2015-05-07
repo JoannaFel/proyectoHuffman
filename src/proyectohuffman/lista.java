@@ -5,8 +5,6 @@
  */
 package proyectohuffman;
 
-import proyectohuffman.Arbol.Nodo;
-
 /**
  *
  * @author oscar
@@ -17,7 +15,7 @@ public class lista {
     
     public void agregar(Nodo elnodo){
         miLista[pos] = elnodo;
-        System.out.println("contenido en la posicion "+pos+" :"+elnodo.getKey()+" "+elnodo.getValor()+" ");//+miLista[pos].getKey());
+        System.out.println("contenido en la posicion "+pos+" :"+elnodo.getFrecuencia()+" "+elnodo.getSimbolo()+" ");//+miLista[pos].getKey());
         pos++;
     }
 }

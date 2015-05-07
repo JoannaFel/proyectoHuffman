@@ -5,7 +5,6 @@
  */
 package proyectohuffman;
 
-import proyectohuffman.Arbol.Nodo;
 
 /**
  *
@@ -28,12 +27,9 @@ public class huffman {
     public void crearSubarbol(){
     for(int i=0; 0<=38; i++){
         Nodo miniarbol;
-        
     } 
-        
-        
-    }
-            
+  
+    }      
     public void gestionar(){
         insertarArbol();
     }

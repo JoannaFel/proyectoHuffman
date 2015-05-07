@@ -13,12 +13,10 @@ public class Arbol {
         raiz = null;
     }
     
-    //inserta un elemento en la con identificador de nodo "key" y el contenido es de cualquier tipo(valor)
-    public void insertar(int key, Object valor){
+    //inserta un elemento en la con identificador de nodo "key" y el contenido es de cualquier tipo(simbolo)
+    public void insertar(int key, Object simbolo){
         //key es el numero en el arbol
-        Nodo nuevo = new Nodo(key);
-        nuevo.valor = valor;
-        
+        Nodo nuevo = new Nodo(key,simbolo);      
         //si no se ha insertado nada
         if(raiz == null){
             raiz = nuevo;
@@ -27,17 +25,17 @@ public class Arbol {
         }else{
             Nodo temporal = raiz;
             while(temporal != null){
-                nuevo.padre = temporal;
-                if(nuevo.key >= temporal.key){
-                    temporal = temporal.hijoDerecho;
+                nuevo.setPadre(temporal);
+                if(nuevo.getFrecuencia() >= temporal.getFrecuencia()){
+                    temporal = temporal.getHijoDerecho();
                 }else{
-                    temporal = temporal.hijoIzquierdo;
+                    temporal = temporal.getHijoIzquierdo();
                 }
             }
-            if(nuevo.key < nuevo.padre.key){
-                nuevo.padre.hijoIzquierdo = nuevo;
+            if(nuevo.getFrecuencia() < nuevo.getPadre().getFrecuencia()){
+                nuevo.getPadre().setHijoIzquierdo(nuevo);
             }else{
-                nuevo.padre.hijoDerecho = nuevo;
+                nuevo.getPadre().setHijoDerecho(nuevo);
             }
         } 
     }
@@ -45,59 +43,11 @@ public class Arbol {
     //recorrer el arbol en inorder y mostrar el contenido de cada key ordenada
     public void inorderTreeWalk(Nodo x){
         if(x != null){
-            inorderTreeWalk(x.hijoIzquierdo);
-            //System.out.println(x.key +" "+ x.valor);
+            inorderTreeWalk(x.getHijoIzquierdo());
+            //System.out.println(x.key +" "+ x.simbolo);
             listaArboles.agregar(x);
-            inorderTreeWalk(x.hijoDerecho);
+            inorderTreeWalk(x.getHijoDerecho());
         }
     }
 
-    //clase anidada Nodo que va a ser solamente utilizada por la clase Arbol
-    public class Nodo{
-	private Nodo     padre;
-	private Nodo     hijoDerecho;
-	private Nodo     hijoIzquierdo;
-	private Integer  key;
-        private Object   valor;
-        
-        //constructor inicializando.
-        public Nodo(int llave){
-            key             = llave;
-            hijoDerecho     = null;
-            hijoIzquierdo   = null;
-            padre           = null;
-            valor           = null;
-        
-        }
-        /*
-        public Nodo(int llave,Object cont){
-            key             = llave;
-            hijoDerecho     = null;
-            hijoIzquierdo   = null;
-            padre           = null;
-            valor           = cont;
-        
-        }*/
-
-        public Nodo getPadre() {
-            return padre;
-        }
-
-        public Nodo getHijoDerecho() {
-            return hijoDerecho;
-        }
-
-        public Nodo getHijoIzquierdo() {
-            return hijoIzquierdo;
-        }
-
-        public Integer getKey() {
-            return key;
-        }
-
-        public Object getValor() {
-            return valor;
-        }
-        
-    }
 }

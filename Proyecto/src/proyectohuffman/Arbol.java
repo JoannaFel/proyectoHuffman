@@ -49,5 +49,27 @@ public class Arbol {
             inorderTreeWalk(x.getHijoDerecho());
         }
     }
+    
+     public void profundidad(Nodo raiz){
+       
+        int alt = 0,altizqu=0;
+        
+        if(raiz == null){
+           System.out.print("la altura del arbol es: 0");
+        }else{
+            Nodo nodo=raiz;
+            while(nodo.getHijoDerecho() !=null || nodo.getHijoIzquierdo()!=null){
+           
+               
+               alt++;
+            nodo=nodo.getHijoDerecho();
+            System.out.println(alt);
+                
+            }
+              
+            }
+       
+          
+         }
 
 }

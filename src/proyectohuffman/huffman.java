@@ -10,7 +10,8 @@ package proyectohuffman;
  */
 public class huffman {
     
-    Lista lista;
+    Lista listaOrdenada;
+    Lista listaSimbolos;
     //Nodo[] listaNodos;
     Arbol arbol;
     
@@ -29,16 +30,16 @@ public class huffman {
         abb.insertar(6,"x");
         abb.insertar(10,"l");
         abb.inorderTreeWalk(abb.getRaiz());
-        lista= abb.getListaNodos();
+        listaOrdenada= abb.getListaNodos();
         for(int i=0; i<38;i++) // Vuelve los null hijos de los nodos de la lista
         {
-            if(lista.getMiListaNodosOrdenados(i)==null)
+            if(listaOrdenada.getMiListaNodosOrdenados(i)==null)
             {
                 i=38;
             }else
             {
-                lista.getMiListaNodosOrdenados(i).setHijoDerecho(null);
-                lista.getMiListaNodosOrdenados(i).setHijoIzquierdo(null);
+                listaOrdenada.getMiListaNodosOrdenados(i).setHijoDerecho(null);
+                listaOrdenada.getMiListaNodosOrdenados(i).setHijoIzquierdo(null);
             }
         }
         
@@ -48,16 +49,15 @@ public class huffman {
         int suma = 0;
         Nodo raiz = new Nodo(0,null);
         Nodo derTemp = new Nodo(0,null);
+        listaSimbolos = new Lista();
         
         for(int i=0;i<38;i++)
         {
-            Nodo nodoActual = lista.getMiListaNodosOrdenados(i);
-            Nodo nodoSgte = lista.getMiListaNodosOrdenados(i+1);
-            
+            Nodo nodoActual = listaOrdenada.getMiListaNodosOrdenados(i);
+            Nodo nodoSgte = listaOrdenada.getMiListaNodosOrdenados(i+1);
             if(nodoActual==null) // La lista es de 38 posiciones y tal vez no se llenen todas
             {                    //Me aseguro de leer solo las posiciones con nodos.
                 i=38; 
-                
             }
             else
             { 
@@ -73,12 +73,33 @@ public class huffman {
                 }
                 raiz = new Nodo(suma,"RaizSuma"); // creo el nodo que almacena la suma de las frecuencias
                 arbol.insertar(raiz, nodoActual, derTemp); // inserto los nodos raiz, hijoIzq e hijoDer en el nuevo arbol
-                System.out.println(raiz.getFrecuencia() + ":izq->" + nodoActual.getFrecuencia() + ":der->" + derTemp.getFrecuencia());
+                System.out.println(raiz.getFrecuencia() + ":izq->" + nodoActual.getId() + ":der->" + derTemp.getId());
+                listaSimbolos.agregar(nodoActual);
+                listaSimbolos.agregar(derTemp);
                 derTemp=raiz; // Almaceno el nodo raiz creado para ubicarlo como hijo derecho de la proxima raiz Suma
             }
         }        
     }
      
+    public void obtenerCodigoLetra(){
+        for(int i=0; i<38;i++)
+        {
+            Nodo nodoActual = listaSimbolos.getMiListaNodosOrdenados(i);
+            
+            if(nodoActual==null) // La lista es de 38 posiciones y tal vez no se llenen todas
+            {                    //Me aseguro de leer solo las posiciones con nodos.
+                i=38; 
+            }
+            else
+            {  
+                while(nodoActual.getPadre() != null)
+                {
+                    
+                }
+                
+            }
+        }
+    }
     
     public void gestionar(){
         crearListaNodos();

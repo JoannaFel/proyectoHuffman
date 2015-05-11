@@ -13,8 +13,9 @@ public class Nodo {
     private Nodo     padre;
     private Nodo     hijoDerecho;
     private Nodo     hijoIzquierdo;
-    public Integer  frecuencia;
-    public Object   simbolo;
+    private Integer  frecuencia;
+    private Object   simbolo;
+    private char id; 
         
         //constructor inicializando.
     public Nodo(int llave,Object etiqueta)
@@ -62,6 +63,15 @@ public class Nodo {
     public Object getSimbolo() {
         return simbolo;
     }
+
+    public char getId() {
+        return id;
+    }
+
+    public void setId(char id) {
+        this.id = id;
+    }
    
+    
     
 }

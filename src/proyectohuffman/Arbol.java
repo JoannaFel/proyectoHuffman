@@ -28,11 +28,15 @@ public class Arbol {
     
     public void insertar(Nodo nodoPadre, Nodo nodoIzq, Nodo nodoDer){ 
         if(raiz == null){ // Crea el primer arbol con la suma de las frecuencias de los dos primeros nodos
+            nodoIzq.setId('0');
+            nodoDer.setId('1');
             raiz = nodoPadre;
             raiz.setHijoIzquierdo(nodoIzq);
             raiz.setHijoDerecho(nodoDer);
         }else{
             Nodo hijoDerTemp = raiz; // toma la raiz de un arbol ya creado y lo guarda temporalmente como hijo derecho.
+            nodoIzq.setId('0');
+            hijoDerTemp.setId('1');
             raiz = nodoPadre;
             raiz.setHijoIzquierdo(nodoIzq);
             raiz.setHijoDerecho(hijoDerTemp);

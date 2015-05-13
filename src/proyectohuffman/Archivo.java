@@ -9,7 +9,9 @@ import java.io.FileReader;
  * @author oscar
  */
 public class Archivo {    
-    public void leerArchivo(){
+    public String leerArchivo(){
+        // Lectura del fichero
+        String linea="";
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -21,8 +23,7 @@ public class Archivo {
             fr = new FileReader (archivo);
             br = new BufferedReader(fr);
 
-            // Lectura del fichero
-            String linea;
+
             while((linea=br.readLine())!=null)
                 System.out.println(linea);
         }
@@ -40,5 +41,6 @@ public class Archivo {
                 e2.printStackTrace();
             }
         }
+        return linea;
    }
 }

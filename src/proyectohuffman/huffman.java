@@ -13,7 +13,7 @@ public class huffman {
     Lista lista;
     //Nodo[] listaNodos;
     Arbol arbol;
-    
+    Archivo texto = new Archivo();  
     
     public huffman(){
         //lista = new Lista();
@@ -86,16 +86,19 @@ public class huffman {
                 ,'o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4'
                 ,'5','6','7','8','9','0','.',',',' '};
         
-        //int[] cantXletra = new int[];
+        int[] cantXletra = new int[letras.length];
         
-        //textoleido = texto.leerArchivo();
-        
+        textoleido = texto.leerArchivo();
+        int contador = 0;
         //convertimos el string a una cadena de caracteres
         char[] textoLeidoChar = textoleido.toCharArray();
         int j=0;
         for(int i=0; i <= textoLeidoChar.length; i++){
-            //if(textoLeidoChar[i] == letras[j] || letras[j+1] || letras[j+2])
-              // j++ 
+            if(textoLeidoChar[i] == letras[j] ){
+                contador++;
+                
+            }
+            cantXletra[j] = contador;
         }
     }
     

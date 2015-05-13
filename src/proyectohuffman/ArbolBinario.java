@@ -20,7 +20,7 @@ public class ArbolBinario {
     
     
     //inserta un elemento en la con identificador de nodo "frecuencia" y el contenido es de cualquier tipo(simbolo)
-    public void insertar(int frecuencia, Object simbolo){
+    public void insertar(int frecuencia, char simbolo){
         //frecuencia es el numero en el arbol
         Nodo nuevo = new Nodo(frecuencia,simbolo);      
         //si no se ha insertado nada

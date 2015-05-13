@@ -22,13 +22,13 @@ public class huffman {
     }
     public void crearListaNodos(){
         ArbolBinario abb = new ArbolBinario();
-        abb.insertar(5,null);
-        abb.insertar(7,"a");
-        abb.insertar(1,"s");
-        abb.insertar(8,"w");
-        abb.insertar(8,"q");
-        abb.insertar(6,"x");
-        abb.insertar(10,"l");
+        abb.insertar(5,' ');
+        abb.insertar(7,'a');
+        abb.insertar(1,'s');
+        abb.insertar(8,'w');
+        abb.insertar(8,'q');
+        abb.insertar(6,'x');
+        abb.insertar(10,'l');
         abb.inorderTreeWalk(abb.getRaiz());
         listaOrdenada= abb.getListaNodos();
         for(int i=0; i<38;i++) // Vuelve los null hijos de los nodos de la lista
@@ -38,17 +38,59 @@ public class huffman {
                 i=38;
             }else
             {
+                String simbolo = listaOrdenada.getMiListaNodosOrdenados(i).getSimbolo() + "";
+                String simboloMay = simbolo.toUpperCase();
+                listaOrdenada.getMiListaNodosOrdenados(i).setSimbolo(simboloMay.charAt(0));
                 listaOrdenada.getMiListaNodosOrdenados(i).setHijoDerecho(null);
                 listaOrdenada.getMiListaNodosOrdenados(i).setHijoIzquierdo(null);
             }
         }
         
+        
+        
+         char []lista ={'a', 'b', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9','.',' ',','};
+         
+        for(int i=0; i<lista.length;i++)
+        {
+           
+            //if(listaOrdenada.getMiListaNodosOrdenados(i) == null)
+            //{
+            //    i=38;
+            //}else
+            {
+               // char caracter = listaOrdenada.getMiListaNodosOrdenados(i).getSimbolo();
+               
+                char caracter = lista[i];
+                int ascii = (int) caracter;
+                
+                if(caracter == ' ')
+                {
+                    ascii = 47;
+                }
+                if(caracter == ',')
+                {
+                    ascii = 123;
+                }
+                
+                int result = ascii % 39;
+                if(result < 0)
+                {
+                    result = result * -1;
+                }
+                
+                System.out.print(i + "--->" + result + "\n");
+            }
+        }
+        
+        
     }
     
     public void crearArbol(){
         int suma = 0;
-        Nodo raiz = new Nodo(0,null);
-        Nodo derTemp = new Nodo(0,null);
+        Nodo raiz ;
+        Nodo derTemp = null;
         listaSimbolos = new Lista();
         
         for(int i=0;i<38;i++)
@@ -71,20 +113,32 @@ public class huffman {
                 {
                     suma = suma + nodoActual.getFrecuencia(); // Sumo los nodos 
                 }
-                raiz = new Nodo(suma,"RaizSuma"); // creo el nodo que almacena la suma de las frecuencias
+                raiz = new Nodo(suma,'+'); // creo el nodo que almacena la suma de las frecuencias
                 arbol.insertar(raiz, nodoActual, derTemp); // inserto los nodos raiz, hijoIzq e hijoDer en el nuevo arbol
                 System.out.println(raiz.getFrecuencia() + ":izq->" + nodoActual.getId() + ":der->" + derTemp.getId());
                 listaSimbolos.agregar(nodoActual);
-                listaSimbolos.agregar(derTemp);
+                
+                if(derTemp.getSimbolo()!= '+')
+                {
+                    listaSimbolos.agregar(derTemp);
+                }
                 derTemp=raiz; // Almaceno el nodo raiz creado para ubicarlo como hijo derecho de la proxima raiz Suma
             }
-        }        
+        }
+        
+        
     }
      
-    public void obtenerCodigoLetra(){
+   /* public void obtenerCodigoLetra(){
+        
+        String codigo = "";
+        String simb = "";
+        
         for(int i=0; i<38;i++)
         {
             Nodo nodoActual = listaSimbolos.getMiListaNodosOrdenados(i);
+            
+            
             
             if(nodoActual==null) // La lista es de 38 posiciones y tal vez no se llenen todas
             {                    //Me aseguro de leer solo las posiciones con nodos.
@@ -94,12 +148,13 @@ public class huffman {
             {  
                 while(nodoActual.getPadre() != null)
                 {
+                    simb = nodoActual.getPadre().getSimbolo() + "";
                     
                 }
                 
             }
         }
-    }
+    }*/
     
     public void gestionar(){
         crearListaNodos();

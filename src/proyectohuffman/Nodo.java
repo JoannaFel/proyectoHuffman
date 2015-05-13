@@ -14,11 +14,11 @@ public class Nodo {
     private Nodo     hijoDerecho;
     private Nodo     hijoIzquierdo;
     private Integer  frecuencia;
-    private Object   simbolo;
+    private char   simbolo;
     private char id; 
         
         //constructor inicializando.
-    public Nodo(int llave,Object etiqueta)
+    public Nodo(int llave,char etiqueta)
     {
         frecuencia  = llave;
         simbolo     = etiqueta;
@@ -40,7 +40,7 @@ public class Nodo {
         this.frecuencia = frecuencia;
     }
 
-    public void setSimbolo(Object simbolo) {
+    public void setSimbolo(char simbolo) {
         this.simbolo = simbolo;
     }
         
@@ -60,7 +60,7 @@ public class Nodo {
         return frecuencia;
     }
 
-    public Object getSimbolo() {
+    public char getSimbolo() {
         return simbolo;
     }
 

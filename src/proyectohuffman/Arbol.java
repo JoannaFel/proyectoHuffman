@@ -43,33 +43,6 @@ public class Arbol {
             }
             
         }
-    
-   /* public void recorrerAmplitud(Nodo raiz){
-        Cola cola, colaAux; //DEFINICIÓN DE 2 VARIABLES DE TIPO COLA
-        Nodo aux = new Nodo(0,null); //DEFINICIÓN AUX DE TIPO NODOARBOL
-
-            cola=new Cola(); //SE INSTANCIA EL OBJETO COLA
-            colaAux=new Cola(); //SE INSTANCIA EL OBJETO COLAAUX
-            cola.encolar(raiz); //SE INSERTA EL NODOARBOL "A" (RAIZ) COMO PRIMER NODO EN LA COLA
-            while (!cola.colaVacia()) //MIENTRAS HAYAN ELEMENTOS EN LA COLA...
-            {
-                
-                aux=cola.desencolar();
-                //System.out.println(aux.getFrecuencia());
-                colaAux.encolar(aux); /*EL ELEMENTO EXTRAIDO DE LA COLA PRINCIPAL ES ASIGNADO 
-                A AUX Y A SU VEZ INSERTADO EN LA COLA AUXILIAR*
-                if (aux.getHijoIzquierdo() != null) //SI EL HIJO IZQUIERDO DEL NODO ACTUAL EXISTE
-                {
-                cola.encolar(aux.getHijoIzquierdo()); //SE INSERTA ESE HIJO COMO ELEMENTO SIGUIENTE EN LA COLA
-                }
-                if (aux.getHijoDerecho()!= null) //SI EL HIJO DERECHO DEL NODO ACTUAL EXISTE
-                {
-                cola.encolar(aux.getHijoDerecho()); //SE INSERTA ESE HIJO COMO ELEMENTO SIGUIENTE EN LA COLA
-                }
-            }
-           
-        colaAux.imprimir(); //POR ÚLTIMO SE IMPRIME LA COLA AUXILIAR
-    }*/
 }
     
     

@@ -10,10 +10,12 @@ package proyectohuffman;
  */
 public class huffman {
     
-    Lista lista;
+    Lista listaOrdenada;
+   //Lista listaSimbolos;
     //Nodo[] listaNodos;
     Arbol arbol;
-    Archivo texto = new Archivo();  
+    Tabla tabla;
+    
     
     public huffman(){
         //lista = new Lista();
@@ -21,43 +23,42 @@ public class huffman {
     }
     public void crearListaNodos(){
         ArbolBinario abb = new ArbolBinario();
-        abb.insertar(5,null);
-        abb.insertar(7,"a");
-        abb.insertar(1,"s");
-        abb.insertar(8,"w");
-        abb.insertar(8,"q");
-        abb.insertar(6,"x");
-        abb.insertar(10,"l");
+        abb.insertar(1,'H');
+        abb.insertar(3,'o');
+        abb.insertar(2,'l');
+        abb.insertar(2,'a');
+        abb.insertar(1,'c');
+        abb.insertar(1,'n');
         abb.inorderTreeWalk(abb.getRaiz());
-        lista= abb.getListaNodos();
+        listaOrdenada= abb.getListaNodos();
         for(int i=0; i<38;i++) // Vuelve los null hijos de los nodos de la lista
         {
-            if(lista.getMiListaNodosOrdenados(i)==null)
+            if(listaOrdenada.getMiListaNodosOrdenados(i)==null)
             {
                 i=38;
             }else
             {
-                lista.getMiListaNodosOrdenados(i).setHijoDerecho(null);
-                lista.getMiListaNodosOrdenados(i).setHijoIzquierdo(null);
+                String simbolo = listaOrdenada.getMiListaNodosOrdenados(i).getSimbolo() + "";
+                String simboloMay = simbolo.toLowerCase();
+                listaOrdenada.getMiListaNodosOrdenados(i).setSimbolo(simboloMay.charAt(0));
+                listaOrdenada.getMiListaNodosOrdenados(i).setHijoDerecho(null);
+                listaOrdenada.getMiListaNodosOrdenados(i).setHijoIzquierdo(null);
             }
-        }
-        
+        }        
     }
-    
     public void crearArbol(){
         int suma = 0;
-        Nodo raiz = new Nodo(0,null);
-        Nodo derTemp = new Nodo(0,null);
+        Nodo raiz ;
+        Nodo derTemp = null;
+        //listaSimbolos = new Lista();
         
         for(int i=0;i<38;i++)
         {
-            Nodo nodoActual = lista.getMiListaNodosOrdenados(i);
-            Nodo nodoSgte = lista.getMiListaNodosOrdenados(i+1);
-            
+            Nodo nodoActual = listaOrdenada.getMiListaNodosOrdenados(i);
+            Nodo nodoSgte = listaOrdenada.getMiListaNodosOrdenados(i+1);
             if(nodoActual==null) // La lista es de 38 posiciones y tal vez no se llenen todas
             {                    //Me aseguro de leer solo las posiciones con nodos.
                 i=38; 
-                
             }
             else
             { 
@@ -71,40 +72,79 @@ public class huffman {
                 {
                     suma = suma + nodoActual.getFrecuencia(); // Sumo los nodos 
                 }
-                raiz = new Nodo(suma,"RaizSuma"); // creo el nodo que almacena la suma de las frecuencias
+                raiz = new Nodo(suma,'+'); // creo el nodo que almacena la suma de las frecuencias
                 arbol.insertar(raiz, nodoActual, derTemp); // inserto los nodos raiz, hijoIzq e hijoDer en el nuevo arbol
-                System.out.println(raiz.getFrecuencia() + ":izq->" + nodoActual.getFrecuencia() + ":der->" + derTemp.getFrecuencia());
+                System.out.println(raiz.getFrecuencia() + ":izq->" + nodoActual.getFrecuencia()+ ":der->" + derTemp.getFrecuencia());
+                //listaOrdenada.agregar(nodoActual);
+
+                //if(derTemp.getSimbolo()!= '+')
+                //{
+                    //listaSimbolos.agregar(derTemp);
+                //}
+                //System.out.println(i + "." + nodoActual +"-->"+nodoActual.getPadre().getFrecuencia());
+
                 derTemp=raiz; // Almaceno el nodo raiz creado para ubicarlo como hijo derecho de la proxima raiz Suma
+            
             }
-        }        
+        }
     }
-     
-    public void contarCaracteres(){
-        String textoleido ="";
+    public void obtenerCodigoLetra(){
         
-        char[] letras = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n'
-                ,'o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4'
-                ,'5','6','7','8','9','0','.',',',' '};
+        Nodo padreTemp;
+        Caracter caracter;
+        String codigo = "",simbFin = "", simbPadre = "";
         
-        int[] cantXletra = new int[letras.length];
-        
-        textoleido = texto.leerArchivo();
-        int contador = 0;
-        //convertimos el string a una cadena de caracteres
-        char[] textoLeidoChar = textoleido.toCharArray();
-        int j=0;
-        for(int i=0; i <= textoLeidoChar.length; i++){
-            if(textoLeidoChar[i] == letras[j] ){
-                contador++;
-                
+        int hash;
+        tabla = new Tabla();
+        for(int i=0; i<38;i++)
+        {
+            Nodo nodoActual = listaOrdenada.getMiListaNodosOrdenados(i);
+            if(nodoActual==null) // La lista es de 38 posiciones y tal vez no se llenen todas
+            {                    //Me aseguro de leer solo las posiciones con nodos.
+                i=38; 
             }
-            cantXletra[j] = contador;
+            else
+            {  
+                //System.out.println(i + "." + nodoActual +"-->"+nodoActual.getPadre().getFrecuencia());
+                caracter = new Caracter();
+                padreTemp= nodoActual.getPadre();
+                simbFin = "" + nodoActual.getId();
+                while(padreTemp != null)
+                {
+                    
+                    simbPadre = "" + padreTemp.getId(); 
+                    codigo = simbPadre + codigo;
+                    padreTemp = padreTemp.getPadre();
+                }
+                codigo = codigo + simbFin;
+                caracter.setCaracter(nodoActual.getSimbolo());
+                caracter.setCodigo(codigo);
+                caracter.setFrecuencia(nodoActual.getFrecuencia());
+                hash = tabla.hash(caracter.getCaracter());
+                tabla.insertar(hash, caracter);
+                codigo= "";
+            }
         }
     }
     
+   /* public void obtenerCodigoArchivo()
+    {
+        char[] texto = {'H','o','l','a','a','c','o','l','o','n'};
+        for(int i=0;i<39;i++)
+        {
+            
+        }
+    }*/
+    
+    public void imprimirTabla()
+    {
+        tabla.imprimir();
+    }
     public void gestionar(){
         crearListaNodos();
         crearArbol();
+        obtenerCodigoLetra();
+        imprimirTabla();
         //arbol.recorrerAmplitud(arbol.getRaiz());
     }
 }

@@ -10,7 +10,7 @@ package proyectohuffman;
  * @author oscar
  */
 public class Lista {
-    Nodo[] miListaNodosOrdenados = new Nodo[38];//va a ser la longitud de los caracteres
+    Nodo[] miListaNodosOrdenados = new Nodo[39];//va a ser la longitud de los caracteres
     private int pos = 0;
     
     public Nodo getMiListaNodosOrdenados(int i){

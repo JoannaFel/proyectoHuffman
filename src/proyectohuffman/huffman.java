@@ -13,21 +13,41 @@ public class huffman {
     Lista lista;
     //Nodo[] listaNodos;
     Arbol arbol;
+    Archivo texto;
+    //string que contiene el texto presente en el archivo
+    String textoleido;
+    //alfabeto a usar de tamaño constante
+    char[] letras= {'a','b','c','d','e','f','g','h','i','j','k','l','m','n'
+            ,'o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4'
+            ,'5','6','7','8','9','0','.',',',' '};
     
+    //arreglo de enteros de longitud alfabeto y va a contener la suma de cada letra
+    //que se encuentre en el texto
+    int[] cantXletra;
+    //arreglo de char que contiene el texto leido por consola
+    char[] textoLeidoChar;
+    ArbolBinario abb;
     
-    public huffman(){
-        //lista = new Lista();
+    public huffman(){    
         arbol = new Arbol();
+        texto = new Archivo();  
+        textoleido = texto.getTexto();
+        textoLeidoChar = textoleido.toCharArray();
+        cantXletra = new int[123];
+        abb = new ArbolBinario();
     }
+    
+    public void realizarInsercion(){
+        for(int i=0;i<letras.length;i++){
+            int num = convertirAscii(letras[i]);
+            if(cantXletra[num] != 0){
+                abb.insertar(cantXletra[num],letras[i]);
+            }
+        }
+    }
+    
     public void crearListaNodos(){
-        ArbolBinario abb = new ArbolBinario();
-        abb.insertar(5,null);
-        abb.insertar(7,"a");
-        abb.insertar(1,"s");
-        abb.insertar(8,"w");
-        abb.insertar(8,"q");
-        abb.insertar(6,"x");
-        abb.insertar(10,"l");
+        realizarInsercion();
         abb.inorderTreeWalk(abb.getRaiz());
         lista= abb.getListaNodos();
         for(int i=0; i<38;i++) // Vuelve los null hijos de los nodos de la lista
@@ -78,11 +98,48 @@ public class huffman {
             }
         }        
     }
-     
+    //metodo que compara una letra contra todo el alfabeto y suma 1 a un arreglo
+    //de enteros cantXletras en la posicion correspondiente a la letra del alfabeto.
+    public void contar_letras(){
+        for(int i=0; i < textoLeidoChar.length; i++){
+            int num = convertirAscii(textoLeidoChar[i]);
+            cantXletra[num] = cantXletra[num]+1; 
+        }
+    }
+    
+    public int convertirAscii(char a){
+        int ascii;
+        char caracter;
+        caracter = a;
+        ascii = (int) caracter;
+        return ascii;
+    }
     
     public void gestionar(){
+        contar_letras();
         crearListaNodos();
-        crearArbol();
+        crearArbol();  
+        
+        char character = 'a';    
+                
+        //System.out.println("valor de a: "+ascii);
+        
         //arbol.recorrerAmplitud(arbol.getRaiz());
     }
 }
+            /*for(int j=0; j<letras.length; j++){
+                if(textoLeidoChar[i] == letras[j] ) {
+                    cantXletra[j] = cantXletra[j]+1;    
+                    //System.out.println("contador"+cantXletra[j]);
+                }   
+            }*/
+
+        
+        /*abb.insertar(5,null);
+        abb.insertar(7,"a");
+        abb.insertar(1,"s");
+        abb.insertar(8,"w");
+        abb.insertar(8,"q");
+        abb.insertar(6,"x");
+        abb.insertar(10,"l");*/
+        

@@ -59,5 +59,27 @@ public class ArbolBinario {
     public Lista getListaNodos() {
         return listaArboles;
     }
-
+    
+     //Metodo que me permite recorrer el arbol y calcular la profundidad
+    public int profundidad(Nodo raiz){
+       
+             int alt = 1;     //Variable que me guarda la altura del arbol
+        
+             if(raiz == null){  //Si el arbol esta vacio la altura es 0
+                  System.out.print("la altura del arbol es: 0");
+                  
+               }else {
+                   Nodo nodo=raiz;    
+                   while(nodo.getHijoDerecho()!=null){   //Compara hasta que el hijo derecho sea null
+                   alt++;                                 //aumenta en 1 cada vez que entre al ciclo
+                   nodo=nodo.getHijoDerecho();   //Nodo raiz pasa a ser el hijo derecho 
+                 
+                   }
+             
+               }
+        return alt;   // Retorna la altura
+             
+             }        
+          
+    
 }

@@ -8,8 +8,17 @@ import java.io.FileReader;
  *
  * @author oscar
  */
-public class Archivo {    
+public class Archivo {
+    String linea,linea2;
+    
+    public Archivo() {
+        linea2="";
+        leerArchivo();
+    }
+    
     public void leerArchivo(){
+        // Lectura del fichero
+        
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -21,10 +30,10 @@ public class Archivo {
             fr = new FileReader (archivo);
             br = new BufferedReader(fr);
 
-            // Lectura del fichero
-            String linea;
-            while((linea=br.readLine())!=null)
-                System.out.println(linea);
+
+            while( (linea = br.readLine()) != null)
+                //System.out.println(linea);
+                linea2 += linea; 
         }
         catch(Exception e){
             e.printStackTrace();
@@ -41,4 +50,9 @@ public class Archivo {
             }
         }
    }
+    
+   public String getTexto(){
+       return linea2;
+   }
+
 }

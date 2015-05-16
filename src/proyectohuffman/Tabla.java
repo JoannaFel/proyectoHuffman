@@ -44,13 +44,15 @@ public class Tabla {
                 return hash;
  
             }
+    
     public void imprimir(){
         for(int i=0; i<39;i++)
         {
             if(caracteres[i] != null){
-            System.out.println(caracteres[i].getCaracter() + "-->" + caracteres[i].getFrecuencia() + "-->" + caracteres[i].getCodigo());
+            System.out.println(i + "." + caracteres[i].getCaracter() + "-->" + caracteres[i].getFrecuencia() + "-->" + caracteres[i].getCodigo());
             }
         }
     }
+    
             
 }

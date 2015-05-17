@@ -9,13 +9,13 @@ package proyectohuffman;
  *
  * @author oscar
  */
-public class Proyectohuffman {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    huffman h = new huffman();
+    ProyectoHuffman h = new ProyectoHuffman();
         h.gestionar();
     }
 }

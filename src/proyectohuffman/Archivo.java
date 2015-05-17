@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.PrintWriter;
 
 public class Archivo {
 
@@ -20,9 +19,9 @@ public class Archivo {
     }
 
     public void leerArchivo() {
-        File archivo = null;
-        FileReader fr = null;
-        BufferedReader br = null;
+        File archivo        = null;
+        FileReader fr       = null;
+        BufferedReader br   = null;
 
         try {
             
@@ -49,12 +48,12 @@ public class Archivo {
     }
 
     public void escribirArchivo(String codigo,String info) {
-        FileWriter ficheroCodigo = null;
-        FileWriter ficheroInfo = null;
+        FileWriter ficheroCodigo    = null;
+        FileWriter ficheroInfo      = null;
         try {
-            ficheroCodigo = new FileWriter("CodigoHuffman.txt");
+            ficheroCodigo   = new FileWriter("CodigoHuffman.txt");
             ficheroCodigo.write(codigo);
-            ficheroInfo = new FileWriter("Informacion.txt");
+            ficheroInfo     = new FileWriter("Informacion.txt");
             ficheroInfo.write(info);
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,5 +73,4 @@ public class Archivo {
     public String getTexto() {
         return linea2;
     }
-
 }

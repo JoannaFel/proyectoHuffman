@@ -4,12 +4,12 @@
 package EstructurasDatos;
 
 public class Nodo {
-    private Nodo     padre;
-    private Nodo     hijoDerecho;
-    private Nodo     hijoIzquierdo;
-    private Integer  frecuencia;
-    private char   simbolo;
-    private char id; 
+    private Nodo        padre;
+    private Nodo        hijoDerecho;
+    private Nodo        hijoIzquierdo;
+    private Integer     frecuencia;
+    private char        simbolo;
+    private char        id; 
         
         //constructor inicializando.
     public Nodo(int llave,char etiqueta)
@@ -65,7 +65,4 @@ public class Nodo {
     public void setId(char id) {
         this.id = id;
     }
-   
-    
-    
 }

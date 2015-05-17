@@ -9,23 +9,26 @@ import EstructurasDatos.Nodo;
 import EstructurasDatos.Arbol;
 import EstructurasDatos.Tabla;
 import EstructurasDatos.ArbolBinario;
+import EstructurasDatos.ArrayString;
 
 public class ProyectoHuffman {
 
-    ArrayNodos listaOrdenada;
-    Archivo archivo;
-    char[] texto;
-    Arbol arbol;
-    Tabla tabla;
-    String codigoHuffman;
+    ArrayNodos  listaOrdenada;
+    Archivo     archivo;
+    char[]      texto;
+    Arbol       arbol;
+    Tabla       tabla;
+    String      codigoHuffman;
+    ArrayString caracteresAscii;
 
     public ProyectoHuffman() {
         //lista = new ArrayNodos();
-        arbol = new Arbol();
-        archivo = new Archivo();
-        tabla = new Tabla();
-
+        arbol           = new Arbol();
+        archivo         = new Archivo();
+        tabla           = new Tabla();
+        caracteresAscii = new ArrayString();
     }
+    
     /*
     * Crea la lista de nodos ordenada por frecuencias ascendentemente.
     */
@@ -34,7 +37,7 @@ public class ProyectoHuffman {
         texto = textoLeido.toCharArray(); // array con los caracteres del texto
         Caracter caracter = null; // Objeto caracter que tendra letra,frecuencia y un codigo huffman.
         int hash, frecuencia, cont = 0; // cont: Contador que aumenta en 1 cuando ingreso un nuevo caracter 
-                                        // a la tabla, esto con el fin de definir el tamaño para el arreglo
+                                        // a la tabla, esto con el fin de definir el tamanyo para el arreglo
                                         // ordenado de nodos         
         tabla = new Tabla();            // tabla funcionHash
         ArbolBinario abb = new ArbolBinario(); // Estructura para ordenar las frecuencias de los nodos
@@ -101,6 +104,7 @@ public class ProyectoHuffman {
             
         }
     }
+    
     /*
     * Obtener el codigo de cada letra leyendo el id de cada nodo y el de sus padres.
     */
@@ -130,6 +134,7 @@ public class ProyectoHuffman {
         }
 
     }
+    
     /*
     * Obtengo el codigo huffman de la cadena de texto del archivo.
     */
@@ -150,7 +155,7 @@ public class ProyectoHuffman {
     public void crearArchivos() {
         
         String cantNodos = "Nodos creados:"+arbol.calcularCantidadNodos(arbol.getRaiz());
-        String profundidadArbol = "Profundidad máxima del árbol generado:"+arbol.profundidad();
+        String profundidadArbol = "Profundidad maxima del arbol generado:"+arbol.profundidad();
         String tablaInfo = "Simbolo -- Caracter \n" + tabla.imprimir();
         String informacion = cantNodos + "\n" + profundidadArbol + "\n" + tablaInfo;
         archivo.escribirArchivo(codigoHuffman,informacion);    

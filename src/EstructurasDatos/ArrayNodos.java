@@ -3,8 +3,6 @@
  */
 package EstructurasDatos;
 
-import EstructurasDatos.Nodo;
-
 public class ArrayNodos {
     Nodo[] nodo;
     private int pos = 0, tam = 0;

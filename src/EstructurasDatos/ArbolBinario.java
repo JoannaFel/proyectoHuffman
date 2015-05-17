@@ -1,10 +1,9 @@
 
 /**
- *Estructura usada para crear la lista ordenada de los nodos de caracteres y frecuencias
+ * Estructura usada para crear la lista ordenada de los nodos de caracteres y frecuencias
  */
 
 package EstructurasDatos;
-
 
 public class ArbolBinario {
 

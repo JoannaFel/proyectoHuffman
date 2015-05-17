@@ -5,12 +5,12 @@ package EstructurasDatos;
 
 public class Arbol {
     
-    private Nodo raiz;
-    private int cantidadNodos;
+    private Nodo    raiz;
+    private int     cantidadNodos;
     
     public Arbol(){
-        raiz = null;
-        cantidadNodos = 0;
+        raiz            = null;
+        cantidadNodos   = 0;
     }
     
     public Nodo getRaiz() {
@@ -69,7 +69,6 @@ public class Arbol {
             }
         }
         return alt;   // Retorna la altura
-
     }  
 }
     

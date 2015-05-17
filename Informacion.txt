@@ -1,5 +1,5 @@
 Nodos creados:77
-Profundidad máxima del árbol generado:39
+Profundidad maxima del arbol generado:39
 Simbolo -- Caracter 
 u -------- 11111111111111111111111111111111111110
 v -------- 11111111111111111111111111111111111111

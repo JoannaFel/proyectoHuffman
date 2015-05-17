@@ -9,12 +9,11 @@ public class Caracter {
     private int frecuencia;
     
     public Caracter(){
-        caracter = ' ';
-        codigo = "";
-        frecuencia = 0;
-        
-        
+        caracter    = ' ';
+        codigo      = "";
+        frecuencia  = 0; 
     }
+    
     public char getCaracter() {
         return caracter;
     }
@@ -37,11 +36,5 @@ public class Caracter {
 
     public void setFrecuencia(int frecuencia) {
         this.frecuencia = frecuencia;
-    }
-    
-    
-    
-    
-    
-    
+    } 
 }

@@ -1,6 +1,5 @@
-Nodos creados:5
-Profundidad maxima del arbol generado:3
+Nodos creados:3
+Profundidad maxima del arbol generado:2
 Simbolo -- Caracter 
-a -------- 10
-b -------- 11
-c -------- 0
+a -------- 0
+b -------- 1

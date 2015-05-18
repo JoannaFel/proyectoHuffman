@@ -9,7 +9,6 @@ import EstructurasDatos.Nodo;
 import EstructurasDatos.Arbol;
 import EstructurasDatos.Tabla;
 import EstructurasDatos.ArbolBinario;
-import EstructurasDatos.ArrayString;
 
 public class ProyectoHuffman {
 
@@ -19,14 +18,12 @@ public class ProyectoHuffman {
     Arbol       arbol;
     Tabla       tabla;
     String      codigoHuffman;
-    ArrayString caracteresAscii;
 
     public ProyectoHuffman() {
         //lista = new ArrayNodos();
         arbol           = new Arbol();
         archivo         = new Archivo();
         tabla           = new Tabla();
-        caracteresAscii = new ArrayString();
     }
     
     /*
@@ -158,10 +155,41 @@ public class ProyectoHuffman {
         String profundidadArbol = "Profundidad maxima del arbol generado:"+arbol.profundidad();
         String tablaInfo = "Simbolo -- Caracter \n" + tabla.imprimir();
         String informacion = cantNodos + "\n" + profundidadArbol + "\n" + tablaInfo;
-        archivo.escribirArchivo(codigoHuffman,informacion);    
+        
+        String textoAscii = generarAscii(codigoHuffman); 
+        
+        archivo.escribirArchivo(codigoHuffman,informacion,textoAscii);    
         System.out.println(informacion);
     }
 
+    //recibo el codigoHufman en binario y lo parte en cadenas de 8 bits
+    //que luego se convierten a entero y a su vez a ascii.
+    public String generarAscii(String binario){
+        int num;
+        char ascii;
+        String elemento;
+        String textoAscii="";       
+        while ((binario.length()%8) != 0){
+            binario = binario+"0";
+        }
+        for(int i=0; i<=binario.length()-8;i++){
+            if(i == 0){
+                elemento    = binario.substring(i,i+8);
+                num         = Integer.parseInt(elemento,2);
+                ascii       = (char)num;
+                textoAscii += ""+ascii;    
+            }else{
+                if(i%8 == 0){
+                    elemento    = binario.substring(i,i+8);
+                    num         = Integer.parseInt(elemento,2);
+                    ascii       = (char)num;
+                    textoAscii += ""+ascii;
+                }
+            }
+        }
+        return textoAscii;
+    }
+    
     public void gestionar() {
         crearListaNodos();
         crearArbol();

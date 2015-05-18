@@ -25,7 +25,7 @@ public class Archivo {
 
         try {
             
-            archivo = new File("archivo.txt");
+            archivo = new File("entrada.txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
@@ -47,14 +47,20 @@ public class Archivo {
         }
     }
 
-    public void escribirArchivo(String codigo,String info) {
+    public void escribirArchivo(String codigo,String info,String ascii) {
         FileWriter ficheroCodigo    = null;
         FileWriter ficheroInfo      = null;
+        FileWriter ficheroAscii     = null;
         try {
             ficheroCodigo   = new FileWriter("CodigoHuffman.txt");
             ficheroCodigo.write(codigo);
+            
             ficheroInfo     = new FileWriter("Informacion.txt");
             ficheroInfo.write(info);
+            
+            ficheroAscii    = new FileWriter("Ascii.txt");
+            ficheroAscii.write(ascii);
+            
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -62,6 +68,7 @@ public class Archivo {
                 if (null != ficheroCodigo) {
                     ficheroCodigo.close();
                     ficheroInfo.close();
+                    ficheroAscii.close();
                 }
             } catch (Exception e2) {
                 e2.printStackTrace();

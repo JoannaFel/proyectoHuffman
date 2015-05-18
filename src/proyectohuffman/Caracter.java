@@ -4,9 +4,9 @@
 package proyectohuffman;
 
 public class Caracter {
-    private char caracter;
-    private String codigo;
-    private int frecuencia;
+    private char    caracter;
+    private String  codigo;
+    private int     frecuencia;
     
     public Caracter(){
         caracter    = ' ';

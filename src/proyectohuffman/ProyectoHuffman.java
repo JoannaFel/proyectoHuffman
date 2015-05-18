@@ -17,7 +17,7 @@ public class ProyectoHuffman {
     char[] texto;
     Arbol arbol;
     Caracter caracter;
-    int tamañoArray;
+    int tamanyoArray;
     Tabla tabla;
     String codigoHuffman;
 
@@ -57,7 +57,7 @@ public class ProyectoHuffman {
                 }
             }
         }
-        tamañoArray = cont;
+        tamanyoArray = cont;
     }
     /*
      * Crea la lista de nodos ordenada por frecuencias ascendentemente.
@@ -72,7 +72,7 @@ public class ProyectoHuffman {
                 abb.insertar(tabla.buscar(i).getFrecuencia(), tabla.buscar(i).getCaracter());
             }
         }
-        abb.crearLista(tamañoArray);
+        abb.crearLista(tamanyoArray);
         abb.inorderTreeWalk(abb.getRaiz());
         listaOrdenada = abb.getListaNodos();
         for (int i = 0; i < listaOrdenada.getTam(); i++) // Vuelve los null hijos de los nodos de la lista

@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
+ *Clase principal de nuestra aplicacion.
  */
 package proyectohuffman;
 
@@ -17,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         long inicio=0, fin=0;
         ProyectoHuffman h = new ProyectoHuffman();
-        inicio = System.currentTimeMillis();
+        inicio = System.currentTimeMillis();//para el tiempo que toma ejecutar el programa
         
         h.gestionar();
         

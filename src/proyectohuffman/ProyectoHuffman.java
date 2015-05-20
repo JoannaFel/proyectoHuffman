@@ -68,7 +68,7 @@ public class ProyectoHuffman {
 
         for (int i = 0; i < 39; i++) {
             if (tabla.buscar(i) != null) {
-                System.out.println(i + "." + tabla.buscar(i).getCaracter() + "-->" + tabla.buscar(i).getFrecuencia());
+                System.out.println(i + "." + tabla.buscar(i).getCaracter() + "--->" + tabla.buscar(i).getFrecuencia());
                 abb.insertar(tabla.buscar(i).getFrecuencia(), tabla.buscar(i).getCaracter());
             }
         }
@@ -198,17 +198,18 @@ public class ProyectoHuffman {
         }
         return textoAscii;
     }
-
+    
+    //metodo principal del proyecto que se encarga de invocar a los demas metodos
     public void gestionar() {
         leerTexto();
-        if (tamanyoArray != 1) {
+        if (tamanyoArray != 1) {//si el texto solamente esta compuesto de palabras de un caracter
             crearListaNodos();
             crearArbol();
             obtenerCodigoLetra();
             obtenerCodigoHuffman();
             crearArchivos();
         } else {
-            System.out.println(texto[0]);
+            System.out.println(texto[0]);//imprime el caracter repetido
         }
     }
 }

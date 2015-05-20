@@ -41,7 +41,7 @@ public class Arbol {
             raiz.getHijoDerecho().setPadre(raiz);
             }
             
-        }
+    }
     
     public int calcularCantidadNodos(Nodo nodo) {  
         if (nodo!=null) {

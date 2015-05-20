@@ -37,7 +37,7 @@ public class Tabla {
         hash = ascii % 39;
         return hash;
     }
-
+    //muestra por consola el el caracter y el cogido binario generado
     public String imprimir() {
         String tablaInfo = "";
         for (int i = 0; i < 39; i++) {

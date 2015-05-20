@@ -74,7 +74,7 @@ public class Archivo {
                 e2.printStackTrace();
             }
         }
-        System.out.print("Archivo Creado!");
+        //System.out.print("Archivo Creado!");
     }
 
     public String getTexto() {

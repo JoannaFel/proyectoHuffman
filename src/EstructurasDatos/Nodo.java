@@ -11,7 +11,7 @@ public class Nodo {
     private char        simbolo;
     private char        id; 
         
-        //constructor inicializando.
+    //constructor inicializando.
     public Nodo(int llave,char etiqueta)
     {
         frecuencia  = llave;

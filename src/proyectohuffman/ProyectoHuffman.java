@@ -42,7 +42,6 @@ public class ProyectoHuffman {
             hash = tabla.funcionHash(letra); // Aplico funcion funcionHash al caracter para asignar posicion
             // en la tabla hash
             if (tabla.buscar(hash) == null) { // Busco el contenido en la posicion
-
                 caracter = new Caracter(); //Creo un nuevo objeto 
                 caracter.setCaracter(letra); // Asigno al atributo caracter la letra 
                 frecuencia = caracter.getFrecuencia() + 1; // Inicio la frecuencia del caracter,
@@ -52,6 +51,7 @@ public class ProyectoHuffman {
                 cont++; // Por cada nuevo caracter insertado aumento el contador en 1
             } else { // Si la posicion en la tabla ya esta ocupada
                 if (letra == tabla.buscar(hash).getCaracter()) {
+                    caracter = tabla.buscar(hash);
                     frecuencia = caracter.getFrecuencia() + 1; // Aumento frecuencia
                     caracter.setFrecuencia(frecuencia);// Cambio la frecuencia ya almacenada por la nueva
                 }
@@ -201,7 +201,7 @@ public class ProyectoHuffman {
 
     public void gestionar() {
         leerTexto();
-        if (caracter.getFrecuencia() == 1) {
+        if (tamanyoArray != 1) {
             crearListaNodos();
             crearArbol();
             obtenerCodigoLetra();
